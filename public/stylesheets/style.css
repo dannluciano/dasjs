@@ -1,0 +1,55 @@
+.pure-g > div {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+.l-box {
+    padding: 1em;
+}
+
+.menu {
+    padding: 1em 0;
+}
+
+main {
+    width: 1200px;
+    margin: 0 auto;
+}
+
+.button-send,
+.button-destroy,
+.button-edit{
+    color: white;
+    border-radius: 4px;
+    text-shadow: 0 1px 1px rgba(0, 0, 0, 0.2);
+}
+
+.button-send {
+    background: rgb(28, 184, 65); /* this is a green */
+}
+
+.button-destroy {
+    background: rgb(202, 60, 60); /* this is a maroon */
+}
+
+.button-edit {
+    background: rgb(223, 117, 20); /* this is an orange */
+}
+
+.label-true,
+.label-false{
+    background: white;
+}
+
+.label-true {
+    color: rgb(28, 184, 65);
+}
+
+.label-false {
+    color: rgb(202, 60, 60);
+}
+
+.text-xsmall {
+    font-size: 85%;
+}

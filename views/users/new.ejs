@@ -1,0 +1,25 @@
+<%- include('../header', {session: session}); %>
+
+<div class="pure-u-1 login">
+  <form method="post" action="/users/" class="pure-form pure-form-aligned">
+    <fieldset>
+      <legend>New User</legend>
+      <div class="pure-control-group">
+        <label for="email">E-mail:</label>
+        <input id="email" type="email" name="user[email]" placeholder="jonh@jonh.me"  required  tabindex=1/>
+      </div>
+      <div class="pure-control-group">
+        <label for="username">Username:</label>
+        <input id="username" type="text" name="user[username]" placeholder="jonh"  required  tabindex=2/>
+      </div>
+      <div class="pure-control-group">
+        <label for="password">Password:</label>
+        <input id="password" type="password" name="user[password]" value="" required  tabindex=3/>
+      </div>
+      <div class="pure-control-group">
+        <a id="back" href="#" onclick="javascript:history.back();" class="pure-button" tabindex=5>Back</a>
+        <button id="submit" type="submit" class="pure-button pure-button-primary" tabindex=4>Send</button>
+      </div>
+    </fieldset>
+  </form>
+</div>

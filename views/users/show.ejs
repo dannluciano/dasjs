@@ -1,0 +1,11 @@
+<%- include('../header', {session: session}); %>
+
+<div class="pure-u-1">
+  <p>
+    <strong>Username:</strong> <%= user.username %>
+  </p>
+  <p>
+    <strong>E-mail:</strong> <%= user.email %>
+  </p>
+  <a href="#" onclick="javascript:history.back();" class="pure-button" tabindex=5>Back</a>
+</div>

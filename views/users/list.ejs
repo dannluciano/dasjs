@@ -1,0 +1,41 @@
+<%- include('../header', {session: session}); %>
+
+<div class="pure-u-1">
+
+  <table class="pure-table pure-table-horizontal">
+    <thead>
+      <tr>
+        <td><strong>ID:</strong></td>
+        <td><strong>Username:</strong></td>
+        <td><strong>E-mail:</strong></td>
+        <td><strong>Is Admin?</strong></td>
+        <td><strong>Options</strong></td>
+      </tr>
+    </thead>
+    <tbody>
+      <% for (let u in users) { %>
+        <tr>
+          <td><a href="/users/<%= users[u].username %>"><%= users[u].id %></a></td>
+          <td><%= users[u].username %></td>
+          <td><%= users[u].email %></td>
+          <td>
+            <strong class="text-xsmall <%= users[u].admin ? "label-true" : "label-false" %>">
+              <%= users[u].admin ? "Yes" : "No" %>
+            </strong>
+          </td>
+          <td>
+            <form method="post" action="/users/<%= users[u].username %>/destroy" class="pure-form">
+              <a href="/users/<%= users[u].username %>/edit" class="pure-button button-edit">Edit</a>
+              <button type="submit" class="pure-button button-destroy">Delete</button>
+            </form>
+          </td>
+        </tr>
+      <% } %>
+    </tbody>
+  </table>
+
+
+  <p>
+    <a href="#" onclick="javascript:history.back();" class="pure-button" tabindex=5>Back</a>
+  </p>
+</div>

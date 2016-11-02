@@ -1,0 +1,32 @@
+<%- include('../header', {session: session}); %>
+
+<div class="pure-u-1 login">
+  <form method="post" action="/users/<%= user.username %>" class="pure-form pure-form-aligned">
+    <fieldset>
+      <legend>Edit User</legend>
+      <div class="pure-control-group">
+        <label for="email">E-mail:</label>
+        <input id="email" type="email" name="user[email]" value=<%= user.email %> required readonly tabindex=1/>
+      </div>
+      <div class="pure-control-group">
+        <label for="username">Username:</label>
+        <input id="username" type="text" name="user[username]" value=<%= user.username %> readonly required tabindex=2/>
+      </div>
+      <div class="pure-control-group">
+        <label for="password">Password:</label>
+        <input id="password" type="password" name="user[password]" value="" tabindex=3/>
+      </div>
+      <% if (session.currentUser.admin) { %>
+        <div class="pure-control-group">
+          <label for="admin" class="pure-checkbox">Is Admin:</label>
+          <input id="admin" type="checkbox" name="user[admin]" <%= user.admin ? 'checked' : '' %> tabindex=4/>
+        </div>
+      <% } %>
+      <div class="pure-control-group">
+        <a href="#" onclick="javascript:history.back();" class="pure-button" tabindex=6>Back</a>
+        <button type="submit" class="pure-button pure-button-primary" tabindex=5>Send</button>
+      </div>
+    </fieldset>
+  </form>
+
+</div>

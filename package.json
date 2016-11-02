@@ -1,0 +1,27 @@
+{
+  "name": "dropbox-authentication-system",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "start": "./bin/www",
+    "test": "testcafe chrome tests/",
+    "setup": "sh db.sh"
+  },
+  "dependencies": {
+    "bcrypt": "^0.8.7",
+    "body-parser": "~1.15.1",
+    "cookie-parser": "~1.4.3",
+    "debug": "~2.2.0",
+    "ejs": "^2.5.2",
+    "express": "~4.13.4",
+    "express-session": "^1.14.1",
+    "helmet": "^2.3.0",
+    "morgan": "~1.7.0",
+    "pg": "^6.1.0",
+    "pg-promise": "^5.3.4",
+    "serve-favicon": "~2.3.0"
+  },
+  "devDependencies": {
+    "chai": "*"
+  }
+}

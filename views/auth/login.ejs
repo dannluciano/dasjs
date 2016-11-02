@@ -1,0 +1,22 @@
+<%- include('../header', {session: session}); %>
+
+<div class="pure-u">
+  <form method="post" action="/auth/login" class="pure-form pure-form-aligned">
+    <fieldset>
+      <legend>LogIn</legend>
+
+      <div class="pure-control-group">
+        <label for="username">Username:</label>
+        <input id="username" type="text" name="username" placeholder="jonh" required tabindex=1/>
+      </div>
+      <div class="pure-control-group">
+        <label for="password">Password:</label>
+        <input id="password" type="password" name="password" required  tabindex=2/>
+      </div>
+      <div class="pure-control-group">
+        <a href="#" onclick="javascript:history.back();" class="pure-button" tabindex=4>Back</a>
+        <button id="submit" type="submit" class="pure-button pure-button-primary" tabindex=3>Send</button>
+      </div>
+    </fieldset>
+  </form>
+</div>

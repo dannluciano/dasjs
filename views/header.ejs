@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <title>Dropbox Auth System</title>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="https://yui-s.yahooapis.com/pure/0.6.0/pure-min.css">
+    <link rel="stylesheet" href="/stylesheets/style.css"/>
+  </head>
+  <body>
+    <main>
+      <nav class="pure-menu pure-menu-horizontal menu">
+        <ul class="pure-menu-list">
+          <li class="pure-menu-item">
+            <a class="pure-menu-link" href="/">Home</a>
+          </li>
+          <li class="pure-menu-item">
+            <a class="pure-menu-link" href="/users/new">SigIn</a>
+          </li>
+          <% if (session.currentUser && session.currentUser.admin) { %>
+          <li class="pure-menu-item">
+            <a class="pure-menu-link" href="/users/">
+              Users
+            </a>
+          </li>
+          <% } %>
+          <% if (session.currentUser) { %>
+          <li class="pure-menu-item">
+            <a class="pure-menu-link" href="/users/<%= session.currentUser.username %>">
+              Account
+            </a>
+          </li>
+          <li class="pure-menu-item">
+            <form method="post" action="/auth/logout">
+              <button type="submit" class="pure-menu-link pure-button">Logout (<%= session.currentUser.username %>)</button>
+            </form>
+          </li>
+          <% } else { %>
+          <li class="pure-menu-item">
+            <a class="pure-menu-link" href="/auth/login">Login</a>
+          </li>
+          <% } %>
+        </ul>
+      </nav>
+      <div class="pure-g">
