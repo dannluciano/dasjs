@@ -15,6 +15,7 @@ $ git clone https://github.com/dannluciano/dasjs && cd dasjs
 
 -  nodejs (7.0.0)
 -  yarn
+-  testcafe
 -  postgres (9.6)
 
 
@@ -23,6 +24,13 @@ $ git clone https://github.com/dannluciano/dasjs && cd dasjs
 ```
 $ brew install nodejs postgresql yarn
 ```
+and
+
+```
+$ npm install -g testcafe
+```
+
+and
 
 ```
 $ yarn
