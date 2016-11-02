@@ -33,7 +33,7 @@ $ npm install -g testcafe
 and
 
 ```
-$ yarn
+$ yarn install
 ```
 
 ## 3º Step Setup the Database
@@ -51,5 +51,5 @@ $ yarn test
 ## 5º Step Run the Application
 
 ```
-$ yarn start
+$ yarn build && yarn start
 ```

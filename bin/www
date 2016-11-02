@@ -4,8 +4,8 @@
  * Module dependencies.
  */
 
-var app = require('../app')
-var debug = require('debug')('dropbox-authentication-system:server')
+var app = require('../lib/app')
+var debug = require('debug')('das:server')
 var http = require('http')
 
 /**

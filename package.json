@@ -1,11 +1,12 @@
 {
-  "name": "dropbox-authentication-system",
+  "name": "das",
   "version": "0.0.0",
   "private": true,
   "scripts": {
     "start": "./bin/www",
     "test": "testcafe chrome tests/",
-    "setup": "sh db.sh"
+    "setup": "sh db.sh",
+    "build": "babel src -d lib"
   },
   "dependencies": {
     "bcrypt": "^0.8.7",
@@ -22,6 +23,10 @@
     "serve-favicon": "~2.3.0"
   },
   "devDependencies": {
-    "chai": "*"
+    "chai": "*",
+    "babel-cli": "^6.0.0",
+    "babel-polyfill": "*",
+    "babel-preset-latest": "*",
+    "babel-plugin-transform-regenerator": "*"
   }
 }

@@ -9,17 +9,21 @@ const crypto = require('crypto')
 const bcrypt = require('bcrypt')
 const config = require('../configs')
 
-function loadUser (username) {
-  const promise = new Promise(function (resolve, reject) {
-    db.one('SELECT id, username, email, admin FROM users WHERE username = $1 LIMIT 1', [username])
-      .then(data => {
-        resolve(data)
-      })
-      .catch(error => {
-        reject(error)
-      })
-  })
-  return promise
+// function loadUser (username) {
+//   const promise = new Promise(function (resolve, reject) {
+//     db.one('SELECT id, username, email, admin FROM users WHERE username = $1 LIMIT 1', [username])
+//       .then(data => {
+//         resolve(data)
+//       })
+//       .catch(error => {
+//         reject(error)
+//       })
+//   })
+//   return promise
+// }
+
+async function loadUser (username) {
+  return await db.one('SELECT id, username, email, admin FROM users WHERE username = $1 LIMIT 1', [username])
 }
 
 router.get('/new', (req, res) => {
