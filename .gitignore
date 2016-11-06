@@ -3,3 +3,4 @@ lib/
 .DS_Store
 yarn-error.log
 .yarnclean
+.idea/
