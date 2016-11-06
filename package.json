@@ -3,8 +3,8 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "start": "./bin/www",
-    "test": "testcafe chrome tests/",
+    "start": "babel-node ./src/www",
+    "test": "testcafe chromium tests/",
     "setup": "sh db.sh",
     "build": "babel src -d lib"
   },
