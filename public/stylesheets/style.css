@@ -53,3 +53,8 @@ main {
 .text-xsmall {
     font-size: 85%;
 }
+
+.link {
+    background-color:transparent;
+    border: none;
+}
