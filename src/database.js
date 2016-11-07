@@ -1,6 +1,6 @@
-'use strict'
+import pg from 'pg-promise'
 
-const pgp = require('pg-promise')()
+const pgp = pg()
 
 const dbConfig = {
   host: process.env['PGHOST'] || 'localhost',
@@ -10,6 +10,4 @@ const dbConfig = {
   password: process.env['PGPASSWORD'] || ''
 }
 
-const db = pgp(dbConfig)
-
-module.exports = db
+export default pgp(dbConfig)

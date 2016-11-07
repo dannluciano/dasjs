@@ -1,16 +1,17 @@
 import 'babel-polyfill'
+import express from 'express'
+import path from 'path'
+import logger from 'morgan'
+import cookieParser from 'cookie-parser'
+import bodyParser from 'body-parser'
+import session from 'express-session'
+import helmet from 'helmet'
 
-const express = require('express')
-const path = require('path')
-const logger = require('morgan')
-const cookieParser = require('cookie-parser')
-const bodyParser = require('body-parser')
-const session = require('express-session')
-const helmet = require('helmet')
-const configs = require('./configs')
-const routes = require('./routes/index')
-const users = require('./routes/users')
-const auth = require('./routes/auth')
+import configs from './configs'
+import index from './routes/index'
+import auth from './routes/auth'
+import users from './routes/users'
+
 const app = express()
 
 app.set('views', path.join(__dirname, '../views'))
@@ -28,9 +29,45 @@ app.use(session({
   saveUninitialized: false
 }))
 
-app.use('/', routes)
-app.use('/users', users)
-app.use('/auth', auth)
+function isLogged (req, res, next) {
+  if (req.session.currentUser) {
+    next()
+  } else {
+    res.redirect('/auth/login')
+  }
+}
+
+const routes = express.Router()
+
+routes.route('/')
+  .get(index)
+
+routes.route('/auth/login/')
+  .get(auth.newlogin)
+  .post(auth.login)
+routes.route('/auth/logout/')
+  .post(auth.logout)
+
+app.use(routes)
+
+const usersRoutes = express.Router()
+
+usersRoutes.route('/users/new').get(users.newUser)
+usersRoutes.route('/users/:username/edit')
+  .all(isLogged)
+  .get(users.editUser)
+usersRoutes.route('/users/:username')
+  .all(isLogged)
+  .get(users.getUser)
+  .post(users.updateUser)
+usersRoutes.route('/users')
+  .get(isLogged, users.getAll)
+  .post(users.createUser)
+usersRoutes.route('/users/:username/destroy')
+  .all(isLogged)
+  .post(users.destroyUser)
+
+app.use(usersRoutes)
 
 app.use((req, res, next) => {
   var err = new Error('Not Found')
@@ -58,4 +95,4 @@ app.use((err, req, res, next) => {
   })
 })
 
-module.exports = app
+export default app

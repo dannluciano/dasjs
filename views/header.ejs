@@ -31,7 +31,7 @@
           </li>
           <li class="pure-menu-item">
             <form method="post" action="/auth/logout">
-              <button type="submit" class="link pure-menu-link">Logout (<%= session.currentUser.username %>)</button>
+              <button id="logout" type="submit" class="link pure-menu-link">Logout (<%= session.currentUser.username %>)</button>
             </form>
           </li>
           <% } else { %>

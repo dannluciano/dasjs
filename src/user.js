@@ -2,7 +2,7 @@ import db from './database'
 
 export default {
     get: (username) => {
-        return db.one('SELECT id, username, email, admin FROM users WHERE username = $1 LIMIT 1', [username])
+        return db.one('SELECT * FROM users WHERE username = $1 LIMIT 1', [username])
     },
     getAll: () => {
         return db.any('SELECT id, username, email, admin FROM users ORDER BY admin DESC, username ASC')

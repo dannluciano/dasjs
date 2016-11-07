@@ -1,10 +1,3 @@
-'use strict'
-
-var express = require('express')
-var router = express.Router()
-
-router.get('/', (req, res) => {
+export default (req, res, next) => {
   res.render('index', { title: 'Express', session: req.session })
-})
-
-module.exports = router
+}

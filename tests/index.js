@@ -35,7 +35,7 @@ test('Test Sign In With Valid Data', async t => {
   expect(url).to.equal(urlExpected)
 })
 
-fixture `Log In`.page('http://localhost:3000/auth/login')
+fixture `Authentication`.page('http://localhost:3000/auth/login')
 
 test('Test Login In With Invalid Data', async t => {
   await t
@@ -53,6 +53,19 @@ test('Test Login In With Valid Data', async t => {
     .typeText('#username', 'admin')
     .typeText('#password', '123456')
     .click('#submit')
+
+  const urlExpected = '/'
+  const url = await t.eval(() => document.location.pathname)
+  expect(url).to.equal(urlExpected)
+})
+
+test('Test Logout', async t => {
+  await t
+    .typeText('#username', 'admin')
+    .typeText('#password', '123456')
+    .click('#submit')
+    .navigateTo('/users/admin')
+    .click('#logout')
 
   const urlExpected = '/'
   const url = await t.eval(() => document.location.pathname)
