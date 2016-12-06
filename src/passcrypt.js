@@ -26,15 +26,12 @@ const BcryptP = {
 export default {
   async encrypt (plaintext) {
     try {
-      let hash = Crypto.createHash('sha512').update(plaintext).digest('hex')
-      let bhash = await BcryptP.hash(hash, 12)
+      const hash = Crypto.createHash('sha512').update(plaintext).digest('hex')
+      const bhash = await BcryptP.hash(hash, 12)
       const aes = Crypto.createCipher('aes-256-cbc', Config.ENCRYPT_KEY)
 
       let ciphertext = aes.update(bhash, 'utf8', 'hex')
       ciphertext += aes.final('hex')
-
-      hash = 0
-      bhash = 0
 
       return ciphertext
     } catch (error) {

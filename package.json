@@ -5,7 +5,7 @@
   "scripts": {
     "start": "babel-node ./src/www",
     "test": "testcafe chromium tests/",
-    "setup": "sh db.sh",
+    "setup": "sh setup.sh",
     "build": "babel src -d lib"
   },
   "dependencies": {
