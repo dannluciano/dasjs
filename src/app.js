@@ -8,9 +8,7 @@ import session from 'express-session'
 import helmet from 'helmet'
 
 import configs from './configs'
-import index from './routes/index'
-import auth from './routes/auth'
-import users from './routes/users'
+import routes from './routes'
 
 const app = express()
 
@@ -29,45 +27,9 @@ app.use(session({
   saveUninitialized: false
 }))
 
-function isLogged (req, res, next) {
-  if (req.session.currentUser) {
-    next()
-  } else {
-    res.redirect('/auth/login')
-  }
-}
-
-const routes = express.Router()
-
-routes.route('/')
-  .get(index)
-
-routes.route('/auth/login/')
-  .get(auth.newlogin)
-  .post(auth.login)
-routes.route('/auth/logout/')
-  .post(auth.logout)
-
-app.use(routes)
-
-const usersRoutes = express.Router()
-
-usersRoutes.route('/users/new').get(users.newUser)
-usersRoutes.route('/users/:username/edit')
-  .all(isLogged)
-  .get(users.editUser)
-usersRoutes.route('/users/:username')
-  .all(isLogged)
-  .get(users.getUser)
-  .post(users.updateUser)
-usersRoutes.route('/users')
-  .get(isLogged, users.getAll)
-  .post(users.createUser)
-usersRoutes.route('/users/:username/destroy')
-  .all(isLogged)
-  .post(users.destroyUser)
-
-app.use(usersRoutes)
+app.use(routes.homeRoute)
+app.use(routes.authRoutes)
+app.use(routes.usersRoutes)
 
 app.use((req, res, next) => {
   var err = new Error('Not Found')

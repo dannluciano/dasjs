@@ -1,12 +1,12 @@
 SRC = $(wildcard src/**/*.js src/*.js)
 LIB = $(SRC:src/%.js=lib/%.js)
 
-all: lib
-	./node_modules/babel-cli/bin/babel-node.js ./src/www
+all: build
+	node ./lib/www.js
 
-lib: $(LIB)
+build: $(LIB)
 lib/%.js: src/%.js .babelrc
-	mkdir -p $(@D)
+	@mkdir -p $(@D)
 	./node_modules/babel-cli/bin/babel.js  $< -o $@
 
 test:
