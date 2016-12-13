@@ -15,7 +15,7 @@
     <tbody>
       <% for (let u in users) { %>
         <tr>
-          <td><a href="/users/<%= users[u].username %>"><%= users[u].id %></a></td>
+          <td><a class="pure-menu-link" href="/users/<%= users[u].username %>"><%= users[u].id %></a></td>
           <td><%= users[u].username %></td>
           <td><%= users[u].email %></td>
           <td>

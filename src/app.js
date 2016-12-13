@@ -2,8 +2,8 @@ import 'babel-polyfill'
 import express from 'express'
 import path from 'path'
 import logger from 'morgan'
-import cookieParser from 'cookie-parser'
 import bodyParser from 'body-parser'
+import cookieParser from 'cookie-parser'
 import session from 'express-session'
 import helmet from 'helmet'
 
@@ -18,13 +18,19 @@ app.set('view engine', 'ejs')
 app.use(helmet())
 app.use(logger('dev'))
 app.use(bodyParser.json())
-app.use(bodyParser.urlencoded({ extended: true }))
-app.use(cookieParser())
+app.use(bodyParser.urlencoded({
+  extended: true
+}))
+app.use(cookieParser(configs.COOKIE_KEY))
 app.use(express.static(path.join(__dirname, '../public')))
 app.use(session({
+  store: new (require('connect-pg-simple')(session))({
+    conString : configs.DATABASE_URL,
+  }),
   secret: configs.SESSION_KEY,
   resave: false,
-  saveUninitialized: false
+  saveUninitialized: false,
+  cookie: { maxAge: 30 * 24 * 60 * 60 * 1000 }
 }))
 
 app.use(routes.homeRoute)

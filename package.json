@@ -11,6 +11,7 @@
   "dependencies": {
     "bcrypt": "^0.8.7",
     "body-parser": "~1.15.1",
+    "connect-pg-simple": "^3.1.2",
     "cookie-parser": "~1.4.3",
     "debug": "~2.2.0",
     "ejs": "^2.5.2",
@@ -23,10 +24,10 @@
     "serve-favicon": "~2.3.0"
   },
   "devDependencies": {
-    "chai": "*",
     "babel-cli": "^6.0.0",
+    "babel-plugin-transform-regenerator": "*",
     "babel-polyfill": "*",
     "babel-preset-latest": "*",
-    "babel-plugin-transform-regenerator": "*"
+    "chai": "*"
   }
 }
