@@ -13,7 +13,7 @@ var pgpOptions = {
 
 const pgp = pg(pgpOptions)
 
-// TODO: make sure within the url to pass in parameter application name;
+// TODO: make sure within the url to pass in parameter application_name;
 // see: https://github.com/vitaly-t/pg-promise/wiki/Connection-Syntax
 const db = pgp(configs.DATABASE_URL)
 
