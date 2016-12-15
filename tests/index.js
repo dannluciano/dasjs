@@ -1,3 +1,5 @@
+/* global fixture, test */
+
 import { expect } from 'chai'
 
 fixture `Getting Started`.page('http://localhost:3000')
