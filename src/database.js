@@ -2,6 +2,7 @@ import pg from 'pg-promise'
 import configs from './configs'
 
 var pgpOptions = {
+  // API: http://vitaly-t.github.io/pg-promise/global.html#event:connect
   connect: function(client, dc, isFresh) {
     // re-configuring every fresh connection:
     if(isFresh) {
