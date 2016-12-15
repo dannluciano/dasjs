@@ -25,7 +25,7 @@ app.use(cookieParser(configs.COOKIE_KEY))
 app.use(express.static(path.join(__dirname, '../public')))
 app.use(session({
   store: new (require('connect-pg-simple')(session))({
-    conString : configs.DATABASE_URL,
+    conString: configs.DATABASE_URL
   }),
   secret: configs.SESSION_KEY,
   resave: false,
