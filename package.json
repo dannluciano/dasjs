@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "start": "babel-node ./src/www",
-    "test": "testcafe chromium tests/",
+    "test": "testcafe chrome tests/",
     "setup": "sh setup.sh",
     "build": "babel src -d lib"
   },

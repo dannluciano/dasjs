@@ -7,7 +7,8 @@ fixture `Getting Started`.page('http://localhost:3000')
 test('Test Home Page', async t => {
   const title = await t.eval(() => document.title)
   const titleExpected = 'Dropbox Auth System'
-  expect(title).to.equal(titleExpected)
+  expect(title)
+    .to.equal(titleExpected)
 })
 
 fixture `Sign In`.page('http://localhost:3000/users/new')
@@ -21,7 +22,8 @@ test('Test Sign In With Invalid Data', async t => {
 
   const urlExpected = '/users/new'
   const url = await t.eval(() => document.location.pathname)
-  expect(url).to.equal(urlExpected)
+  expect(url)
+    .to.equal(urlExpected)
 })
 
 test('Test Sign In With Valid Data', async t => {
@@ -34,7 +36,8 @@ test('Test Sign In With Valid Data', async t => {
 
   const urlExpected = '/'
   const url = await t.eval(() => document.location.pathname)
-  expect(url).to.equal(urlExpected)
+  expect(url)
+    .to.equal(urlExpected)
 })
 
 fixture `Authentication`.page('http://localhost:3000/auth/login')
@@ -47,7 +50,8 @@ test('Test Login In With Invalid Data', async t => {
 
   const urlExpected = '/auth/login'
   const url = await t.eval(() => document.location.pathname)
-  expect(url).to.equal(urlExpected)
+  expect(url)
+    .to.equal(urlExpected)
 })
 
 test('Test Login In With Valid Data', async t => {
@@ -58,7 +62,8 @@ test('Test Login In With Valid Data', async t => {
 
   const urlExpected = '/'
   const url = await t.eval(() => document.location.pathname)
-  expect(url).to.equal(urlExpected)
+  expect(url)
+    .to.equal(urlExpected)
 })
 
 test('Test Logout', async t => {
@@ -71,5 +76,35 @@ test('Test Logout', async t => {
 
   const urlExpected = '/'
   const url = await t.eval(() => document.location.pathname)
-  expect(url).to.equal(urlExpected)
+  expect(url)
+    .to.equal(urlExpected)
+})
+
+fixture `Admin Page`.page('http://localhost:3000/auth/login')
+
+test('Test Admin Page With Valid Data', async t => {
+  await t
+    .typeText('#username', 'admin')
+    .typeText('#password', '123456')
+    .click('#submit')
+    .navigateTo('/users/')
+
+  const urlExpected = '/users/'
+  const url = await t.eval(() => document.location.pathname)
+  expect(url)
+    .to.equal(urlExpected)
+})
+
+test('Test Admin Page With Invalid Data', async t => {
+
+  await t
+    .typeText('#username', `dannluciano`)
+    .typeText('#password', '123456')
+    .click('#submit')
+    .navigateTo('/users/')
+
+  const urlExpected = '/auth/login'
+  const url = await t.eval(() => document.location.pathname)
+  expect(url)
+    .to.equal(urlExpected)
 })
