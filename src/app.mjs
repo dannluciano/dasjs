@@ -1,4 +1,3 @@
-import 'babel-polyfill'
 import express from 'express'
 import path from 'path'
 import logger from 'morgan'
@@ -10,9 +9,11 @@ import helmet from 'helmet'
 import configs from './configs'
 import routes from './routes'
 
+import sdb from 'connect-pg-simple'
+
 const app = express()
 
-app.set('views', path.join(__dirname, '../views'))
+app.set('views', path.join(process.cwd(), '/views'))
 app.set('view engine', 'ejs')
 
 app.use(helmet())
@@ -22,9 +23,9 @@ app.use(bodyParser.urlencoded({
   extended: true
 }))
 app.use(cookieParser(configs.COOKIE_KEY))
-app.use(express.static(path.join(__dirname, '../public')))
+app.use(express.static(path.join(process.cwd(), '/public')))
 app.use(session({
-  store: new (require('connect-pg-simple')(session))({
+  store: new(sdb(session))({
     conString: configs.DATABASE_URL
   }),
   secret: configs.SESSION_KEY,

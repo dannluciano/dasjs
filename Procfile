@@ -1,1 +1,1 @@
-web: node lib/www.js
+web: node --experimental-modules src/www.mjs

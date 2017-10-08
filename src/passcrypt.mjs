@@ -1,4 +1,4 @@
-import Config from './configs.js'
+import Config from './configs'
 import Bcrypt from 'bcrypt'
 import Crypto from 'crypto'
 
@@ -24,9 +24,11 @@ const BcryptP = {
 }
 
 export default {
-  async encrypt (plaintext) {
+  async encrypt(plaintext) {
     try {
-      const hash = Crypto.createHash('sha512').update(plaintext).digest('hex')
+      const hash = Crypto.createHash('sha512')
+        .update(plaintext)
+        .digest('hex')
       const bhash = await BcryptP.hash(hash, 12)
       const aes = Crypto.createCipher('aes-256-cbc', Config.ENCRYPT_KEY)
 
@@ -38,14 +40,16 @@ export default {
       console.error(error)
     }
   },
-  async compare (password, ciphertext) {
+  async compare(password, ciphertext) {
     try {
       const aes = Crypto.createDecipher('aes-256-cbc', Config.ENCRYPT_KEY)
 
       let bhash = aes.update(ciphertext, 'hex', 'utf8')
       bhash += aes.final('utf8')
 
-      password = Crypto.createHash('sha512').update(password).digest('hex')
+      password = Crypto.createHash('sha512')
+        .update(password)
+        .digest('hex')
 
       return await BcryptP.compare(password, bhash)
     } catch (error) {

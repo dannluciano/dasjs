@@ -1,7 +1,9 @@
-import { Router } from 'express'
+import express from 'express'
 import home from './home'
 import auth from './auth'
 import users from './users'
+
+const Router = express.Router
 
 function isLogged (req, res, next) {
   if (req.session.currentUser) {
@@ -39,4 +41,4 @@ usersRoutes.route('/users/:username/destroy')
   .all(isLogged)
   .post(users.destroyUser)
 
-export default {homeRoute, authRoutes, usersRoutes}
+export default { homeRoute, authRoutes, usersRoutes }

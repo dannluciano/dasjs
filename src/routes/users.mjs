@@ -1,5 +1,5 @@
-import User from '../user.js'
-import PassCrypt from '../passcrypt.js'
+import User from '../user'
+import PassCrypt from '../passcrypt'
 
 export default {
   async getAll (req, res, next) {
