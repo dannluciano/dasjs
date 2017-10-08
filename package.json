@@ -3,10 +3,11 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "start": "babel-node ./src/www",
+    "start": "nf start",
     "test": "testcafe chrome tests/",
     "setup": "sh setup.sh",
-    "build": "babel src -d lib"
+    "build": "babel src -d lib",
+    "preinstall": "babel src -d lib"
   },
   "dependencies": {
     "bcrypt": "^0.8.7",
@@ -21,13 +22,13 @@
     "morgan": "~1.7.0",
     "pg": "^6.1.0",
     "pg-promise": "^5.3.4",
-    "serve-favicon": "~2.3.0"
-  },
-  "devDependencies": {
+    "serve-favicon": "~2.3.0",
     "babel-cli": "^6.0.0",
     "babel-plugin-transform-regenerator": "*",
     "babel-polyfill": "*",
-    "babel-preset-latest": "*",
+    "babel-preset-latest": "*"
+  },
+  "devDependencies": {
     "chai": "*"
   }
 }
