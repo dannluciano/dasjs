@@ -5,3 +5,4 @@ yarn-error.log
 .yarnclean
 .idea/
 .jsconfig.json
+.vscode/temp.sql
