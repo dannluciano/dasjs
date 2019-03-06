@@ -25,7 +25,7 @@ app.use(bodyParser.urlencoded({
 app.use(cookieParser(configs.COOKIE_KEY))
 app.use(express.static(path.join(process.cwd(), '/public')))
 app.use(session({
-  store: new(sdb(session))({
+  store: new (sdb(session))({
     conString: configs.DATABASE_URL
   }),
   secret: configs.SESSION_KEY,
@@ -53,15 +53,14 @@ if (app.get('env') === 'development') {
       session: req.session
     })
   })
-}
-
-app.use((err, req, res, next) => {
-  res.status(err.status || 500)
-  res.render('error', {
-    message: err.message,
-    error: {},
-    session: req.session
+} else {
+  app.use((err, req, res, next) => {
+    res.status(err.status || 500)
+    res.render('error', {
+      message: err.message,
+      error: {},
+      session: req.session
+    })
   })
-})
-
+}
 export default app

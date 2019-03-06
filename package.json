@@ -3,10 +3,11 @@
   "version": "0.0.0",
   "private": true,
   "engines": {
-    "node": "8.6.*"
+    "node": ">8.6.*"
   },
   "scripts": {
     "start": "nf start",
+    "local": "nf -e .env.local start",
     "test": "testcafe chrome tests/",
     "setup": "sh setup.sh"
   },
@@ -26,6 +27,8 @@
     "serve-favicon": "~2.3.0"
   },
   "devDependencies": {
-    "chai": "*"
+    "chai": "*",
+    "foreman": "^3.0.1",
+    "testcafe": "^1.1.0"
   }
 }

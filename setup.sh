@@ -1,10 +1,10 @@
 #! /bin/sh
 
-if psql -lqt | cut -d \| -f 1 | grep -qw "dasdb"; then
+if psql -U postgres -w -lqt | cut -d \| -f 1 | grep -qw "dasdb"; then
     echo "Database \"dasdb\" already exists"
-    psql -d dasdb -f schema.sql
+    psql -U postgres -w -d dasdb -f schema.sql
 else
-    createdb dasdb && psql -d dasdb -f schema.sql
+    createdb -U postgres -w dasdb && psql -U postgres -w -d dasdb -f schema.sql
 fi
 
 echo "Database \"dasdb\" setup finished"

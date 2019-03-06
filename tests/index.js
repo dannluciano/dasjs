@@ -2,7 +2,9 @@
 
 import { expect } from 'chai'
 
-fixture `Getting Started`.page('http://localhost:3000')
+const url = 'http://localhost:5000'
+
+fixture`Getting Started`.page(url)
 
 test('Test Home Page', async t => {
   const title = await t.eval(() => document.title)
@@ -11,7 +13,7 @@ test('Test Home Page', async t => {
     .to.equal(titleExpected)
 })
 
-fixture `Sign In`.page('http://localhost:3000/users/new')
+fixture`Sign In`.page(url + '/users/new')
 
 test('Test Sign In With Invalid Data', async t => {
   await t
@@ -40,7 +42,7 @@ test('Test Sign In With Valid Data', async t => {
     .to.equal(urlExpected)
 })
 
-fixture `Authentication`.page('http://localhost:3000/auth/login')
+fixture`Authentication`.page(url + '/auth/login')
 
 test('Test Login In With Invalid Data', async t => {
   await t
@@ -80,7 +82,7 @@ test('Test Logout', async t => {
     .to.equal(urlExpected)
 })
 
-fixture `Admin Page`.page('http://localhost:3000/auth/login')
+fixture`Admin Page`.page(url + '/auth/login')
 
 test('Test Admin Page With Valid Data', async t => {
   await t
@@ -96,9 +98,8 @@ test('Test Admin Page With Valid Data', async t => {
 })
 
 test('Test Admin Page With Invalid Data', async t => {
-
   await t
-    .typeText('#username', `dannluciano`)
+    .typeText('#username', 'dannluciano')
     .typeText('#password', '123456')
     .click('#submit')
     .navigateTo('/users/')

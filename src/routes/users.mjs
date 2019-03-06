@@ -39,7 +39,7 @@ export default {
     const username = req.params.username
     const currentUser = req.session.currentUser
 
-    if (currentUser && currentUser.admin || currentUser.username === username) {
+    if ((currentUser && currentUser.admin) || (currentUser.username === username)) {
       try {
         const user = await User.get(username)
         console.log(`User ${currentUser.id} loaded user ${username}`)
@@ -58,7 +58,7 @@ export default {
     const username = req.params.username
     const currentUser = req.session.currentUser
 
-    if (currentUser && currentUser.admin || currentUser.username === username) {
+    if ((currentUser && currentUser.admin) || (currentUser.username === username)) {
       try {
         const user = await User.get(username)
         res.render('users/edit', { user: user, session: req.session })
@@ -75,7 +75,7 @@ export default {
     const username = req.params.username
     const currentUser = req.session.currentUser
 
-    if (currentUser && currentUser.admin || currentUser.username === username) {
+    if ((currentUser && currentUser.admin) || (currentUser.username === username)) {
       try {
         const user = await User.get(username)
         const isAdmin = req.body.user.admin || false
@@ -95,7 +95,7 @@ export default {
     const username = req.params.username
     const currentUser = req.session.currentUser
 
-    if (currentUser && currentUser.admin && currentUser.username !== username) {
+    if ((currentUser && currentUser.admin) && (currentUser.username !== username)) {
       try {
         const user = await User.get(username)
         await User.destroy(user)
