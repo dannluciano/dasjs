@@ -14,7 +14,7 @@
   "dependencies": {
     "bcrypt": "^0.8.7",
     "body-parser": "~1.15.1",
-    "connect-pg-simple": "^3.1.2",
+    "connect-pg-simple": "^6.0.1",
     "cookie-parser": "~1.4.3",
     "debug": "~2.2.0",
     "ejs": "^2.5.2",
